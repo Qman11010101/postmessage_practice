@@ -1,3 +1,11 @@
+const acceptableOrigins = ["https://chunithm-net-eng.com/", "https://new.chunithm-net.com/"]
+
+document.addEventListener("DOMContentLoaded", () => {
+    const ref = document.referrer
+    if (acceptableOrigins.includes(document.referrer))
+        window.opener.postMessage("ready", ref)
+});
+
 window.addEventListener("message", (event) => {
     console.log("ORIGIN: " + event.origin)
     console.log("REFERRER: " + document.referrer)
